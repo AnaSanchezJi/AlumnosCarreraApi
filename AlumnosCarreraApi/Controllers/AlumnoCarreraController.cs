@@ -69,6 +69,15 @@ namespace AlumnosCarreraApi.Controllers
         }
 
         [HttpGet]
+        [Route("GetAlumnoCarrera/{id}")]
+        public ContentResult GetAlumnoCarrera(Int32 id)
+        {
+            var res = LoDBContext.eva_alumnos_carreras.Find(id);                           
+            string result = JsonConvert.SerializeObject(res);
+            return Content(result, "application/json");
+        }
+
+        [HttpGet]
         [Route("GetDetallesAlumnoCarrera/{id}")]
         public ContentResult GetDetallesAlumnoCarrera(int id)
         {
@@ -280,7 +289,7 @@ namespace AlumnosCarreraApi.Controllers
         //UPDATE
         // PUT api/5
         [HttpPut("{id}")]
-        public IActionResult Update(Int16 id, eva_alumnos_carreras ac)
+        public IActionResult Update(Int32 id, eva_alumnos_carreras ac)
         {
             var edificio = LoDBContext.eva_alumnos_carreras.Find(id);
 
@@ -326,7 +335,7 @@ namespace AlumnosCarreraApi.Controllers
 
         // DELETE api/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(Int16 id)
+        public IActionResult Delete(Int32 id)
         {
             var edificio = LoDBContext.eva_alumnos_carreras.Find(id);
             if (edificio == null) { return new ObjectResult("Incorrecto!"); }

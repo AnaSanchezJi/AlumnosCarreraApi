@@ -92,8 +92,8 @@ namespace AlumnosCarreraApi.Models
     {
         [Key]
         [Required]
-        public Int16 IdCarrera { get; set;}
         public Int32 IdAlumno { get; set; }
+        public Int16 IdCarrera { get; set; }
         public Int32 IdReticula { get; set; }
         public Int16 IdEspecialidad { get; set; }
         public DateTime FechaIngreso { get; set; }
